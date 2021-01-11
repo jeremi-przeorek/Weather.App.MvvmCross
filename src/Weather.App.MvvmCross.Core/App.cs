@@ -1,6 +1,8 @@
-﻿using MvvmCross.IoC;
+using MvvmCross;
+using MvvmCross.IoC;
 using MvvmCross.ViewModels;
-using Weather.App.MvvmCross.Core.ViewModels.Home;
+using Weather.App.MvvmCross.Core.Data;
+using Weather.App.MvvmCross.Core.ViewModels.General;
 
 namespace Weather.App.MvvmCross.Core
 {
@@ -13,7 +15,9 @@ namespace Weather.App.MvvmCross.Core
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 
-            RegisterAppStart<HomeViewModel>();
+            Mvx.IoCProvider.RegisterType<IWeatherLocationRepository, WeatherLocationRepository>();
+
+            RegisterAppStart<GeneralListViewModel>();
         }
     }
 }
