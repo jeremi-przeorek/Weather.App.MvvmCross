@@ -9,7 +9,7 @@ using Weather.App.MvvmCross.Core.Models;
 
 namespace Weather.App.MvvmCross.Core.Services
 {
-    class WeatherForecastService
+    public class WeatherForecastService
     {
         private const string ApiUrl = "https://api.weatherbit.io/v2.0";
         private const string ApiKey = "d2053f9f82d6422ba965b36c2acda96f";

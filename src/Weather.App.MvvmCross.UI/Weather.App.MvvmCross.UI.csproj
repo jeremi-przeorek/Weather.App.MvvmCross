@@ -9,7 +9,7 @@
     <PackageReference Include="MvvmCross" Version="7.1.2" />
     <PackageReference Include="MvvmCross.Forms" Version="7.1.2" />
     <PackageReference Include="MvvmCross.Plugin.MethodBinding" Version="7.1.2" />
-    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1269" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1874" />
   </ItemGroup>
   
   <ItemGroup>
@@ -20,8 +20,11 @@
     <Compile Update="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Pages\GeneralList.xaml.cs">
-      <DependentUpon>GeneralList.xaml</DependentUpon>
+    <Compile Update="Pages\AddLocationWizardPage.xaml.cs">
+      <DependentUpon>AddLocationWizardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\GeneralListPage.xaml.cs">
+      <DependentUpon>GeneralListPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Resources\Colors.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>

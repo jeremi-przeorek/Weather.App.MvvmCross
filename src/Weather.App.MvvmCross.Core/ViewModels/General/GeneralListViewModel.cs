@@ -6,6 +6,7 @@ using MvvmCross.Navigation;
 using MvvmCross.Plugin.FieldBinding;
 using Weather.App.MvvmCross.Core.Data;
 using Weather.App.MvvmCross.Core.Models;
+using Weather.App.MvvmCross.Core.ViewModels.AddLocationWizard;
 
 namespace Weather.App.MvvmCross.Core.ViewModels.General
 {
@@ -16,14 +17,8 @@ namespace Weather.App.MvvmCross.Core.ViewModels.General
 
         public INC<List<WeatherLocation>> WeatherLocations = new NC<List<WeatherLocation>>();
 
-
-        private bool _isRefreshing;
-        public bool IsRefreshing
-        {
-            get => _isRefreshing;
-            set => SetProperty(ref _isRefreshing, value);
-        }
-
+        public INC<bool> IsRefreshing = new NC<bool>();
+        
         public GeneralListViewModel(IMvxNavigationService navigationService, IWeatherLocationRepository weatherLocationRepository)
         {
             _navigationService = navigationService;
@@ -32,14 +27,13 @@ namespace Weather.App.MvvmCross.Core.ViewModels.General
 
         public async void ShowAddLocationWizardAsync()
         {
-            var df = "Adb";
-            //await _navigationService.PushAsync(new AddLocationWizard());
+            await _navigationService.Navigate<AddLocationWizardViewModel>();
         }
 
         public void UpdateWeatherLocationsList()
         {
             WeatherLocations.Value = new List<WeatherLocation>(_weatherLocationRepository.GetAll());
-            IsRefreshing = false;
+            IsRefreshing.Value = false;
         }
 
         public void ShowWeatherPresentationPage(WeatherLocation location)

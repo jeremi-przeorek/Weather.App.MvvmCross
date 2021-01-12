@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage
+    x:TypeArguments="viewModels:AddLocationWizardViewModel"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:local="clr-namespace:Weather.App.MvvmCross.UI.Pages"
+    x:Class="Weather.App.MvvmCross.UI.Pages.AddLocationWizardPage"
+    xmlns:viewModels="clr-namespace:Weather.App.MvvmCross.Core.ViewModels.AddLocationWizard;assembly=Weather.App.MvvmCross.Core">
+
+    <ContentPage.Content>
+        <Grid VerticalOptions="Center"
+                     Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <ActivityIndicator IsRunning="{Binding IsRefreshing}"
+                               IsVisible="{Binding IsRefreshing}"
+                               mvx:Bi.nd="IsRunning IsRefreshing; IsVisible IsRefreshing"
+                               IsEnabled="True"
+                               Grid.Row="0"/>
+            <Button Text="Use my location"
+                    mvx:Bi.nd="Command AddLocationByMyLocation"
+                    CornerRadius="20"
+                    VerticalOptions="CenterAndExpand"
+                    Grid.Row="1"/>
+            <Button Text="Select from list"
+                    Command="{Binding AddLocationByListCommand}"
+                    CornerRadius="20"
+                    VerticalOptions="Center"
+                    Grid.Row="2"/>
+        </Grid>
+    </ContentPage.Content>
+</views:MvxContentPage>
