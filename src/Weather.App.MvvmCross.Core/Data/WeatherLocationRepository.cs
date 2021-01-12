@@ -1,4 +1,3 @@
-using MvvmCross;
 using System.Collections.Generic;
 using System.Linq;
 using Weather.App.MvvmCross.Core.Models;

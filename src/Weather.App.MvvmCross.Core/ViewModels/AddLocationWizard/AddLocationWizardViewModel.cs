@@ -1,12 +1,10 @@
-using MvvmCross.Navigation;
 using MvvmCross.Plugin.FieldBinding;
-using System;
 using Weather.App.MvvmCross.Core.Data;
 using Weather.App.MvvmCross.Core.Services;
-using MvvmCross.Plugin.Location;
 using Weather.App.MvvmCross.Core.Models;
 using Acr.UserDialogs;
-using MvvmCross;
+using MvvmCross.Navigation;
+using Weather.App.MvvmCross.Core.ViewModels.AddLocationFromListWizard;
 
 namespace Weather.App.MvvmCross.Core.ViewModels.AddLocationWizard
 {
@@ -19,17 +17,20 @@ namespace Weather.App.MvvmCross.Core.ViewModels.AddLocationWizard
 
         private readonly IUserDialogs _userDialogs;
         private readonly ILocationService _locationService;
+        private readonly IMvxNavigationService _navigationService;
 
         public AddLocationWizardViewModel(
             IUserDialogs userDialogs,
-            ILocationService locationService)
+            ILocationService locationService,
+            IMvxNavigationService navigationService)
         {
             _userDialogs = userDialogs;
             _locationService = locationService;
+            _navigationService = navigationService;
         }
 
 
-        public async void AddLocationByMyLocation()
+        public async void AddLocationByMyLocationAsync()
         {   
             IsRefreshing.Value = true;
 
@@ -51,10 +52,9 @@ namespace Weather.App.MvvmCross.Core.ViewModels.AddLocationWizard
             }
         }
 
-        public async void AddLocationByList()
+        public async void AddLocationByListAsync()
         {
-
-            //await _pageService.PushAsync(new AddLocationFromListWizard());
+            await _navigationService.Navigate<AddLocationFromListWizardViewModel>();
         }
     }
 }

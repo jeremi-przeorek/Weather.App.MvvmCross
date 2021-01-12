@@ -1,8 +1,5 @@
 using Flurl;
 using Flurl.Http;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Weather.App.Models;
 using Weather.App.MvvmCross.Core.Models;

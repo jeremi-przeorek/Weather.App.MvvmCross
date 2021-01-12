@@ -1,8 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using MvvmCross.Plugin.Location;
 using Xamarin.Essentials;
 
 namespace Weather.App.MvvmCross.Core.Services

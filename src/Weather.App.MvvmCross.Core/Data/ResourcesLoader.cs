@@ -8,10 +8,10 @@ using Weather.App.MvvmCross.Core.Models;
 
 namespace Weather.App.MvvmCross.Core.Data
 {
-    public static class ResourcesLoader
+    public class ResourcesLoader : IResourcesLoader
     {
-        private static List<WeatherLocation> _weatherLocations;
-        public static async Task<List<WeatherLocation>> LoadWeatherLocationsAsync()
+        private List<WeatherLocation> _weatherLocations;
+        public async Task<List<WeatherLocation>> LoadWeatherLocationsAsync()
         {
             if (_weatherLocations != null)
             {
@@ -19,7 +19,7 @@ namespace Weather.App.MvvmCross.Core.Data
             }
 
             var assembly = typeof(ResourcesLoader).GetTypeInfo().Assembly;
-            Stream stream = assembly.GetManifestResourceStream("Weather.App.Resources.cities_20000.json");
+            Stream stream = assembly.GetManifestResourceStream("Weather.App.MvvmCross.Core.Resources.cities_20000.json");
 
             using (var reader = new StreamReader(stream))
             {

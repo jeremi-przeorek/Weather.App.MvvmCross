@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mvxViews:MvxContentPage
+    x:TypeArguments="viewModels:AddLocationFromListWizardViewModel"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:mvxViews="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:local="clr-namespace:Weather.App.MvvmCross.UI.Pages"
+    xmlns:behaviors="clr-namespace:Weather.App.MvvmCross.UI.Behaviors"
+    xmlns:commandbinding="clr-namespace:MvvmCross.Commands;assembly=MvvmCross"
+    xmlns:c="clr-namespace:Weather.App.MvvmCross.UI.Converters"
+    x:Class="Weather.App.MvvmCross.UI.Pages.AddLocationFromListWizardPage"
+    xmlns:viewModels="clr-namespace:Weather.App.MvvmCross.Core.ViewModels.AddLocationFromListWizard;assembly=Weather.App.MvvmCross.Core">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <c:ItemTappedEventArgsConverter x:Key="itemTappedEventArgsConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar mvx:Bi.nd="Text SearchBarText"/>
+            <ListView x:Name="listView"
+                      HasUnevenRows="True"
+                      mvx:Bi.nd="ItemsSource Locations">
+                <ListView.Behaviors>
+                    <behaviors:EventToCommandBehavior EventName="ItemTapped" 
+                                                      mvx:Bi.nd="Command AddLocationAsync"
+                                                      Converter="{StaticResource itemTappedEventArgsConverter}"/>
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Height="80">
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                <Label 
+                                       mvx:Bi.nd="Text City"
+                                       FontSize="Title"
+                                       Margin="20"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</mvxViews:MvxContentPage>

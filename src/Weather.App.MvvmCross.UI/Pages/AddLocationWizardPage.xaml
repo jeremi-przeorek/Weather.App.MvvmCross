@@ -17,18 +17,16 @@
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <ActivityIndicator IsRunning="{Binding IsRefreshing}"
-                               IsVisible="{Binding IsRefreshing}"
-                               mvx:Bi.nd="IsRunning IsRefreshing; IsVisible IsRefreshing"
+            <ActivityIndicator mvx:Bi.nd="IsRunning IsRefreshing; IsVisible IsRefreshing"
                                IsEnabled="True"
                                Grid.Row="0"/>
             <Button Text="Use my location"
-                    mvx:Bi.nd="Command AddLocationByMyLocation"
+                    mvx:Bi.nd="Command AddLocationByMyLocationAsync"
                     CornerRadius="20"
                     VerticalOptions="CenterAndExpand"
                     Grid.Row="1"/>
             <Button Text="Select from list"
-                    Command="{Binding AddLocationByListCommand}"
+                    mvx:Bi.nd="Command AddLocationByListAsync"
                     CornerRadius="20"
                     VerticalOptions="Center"
                     Grid.Row="2"/>

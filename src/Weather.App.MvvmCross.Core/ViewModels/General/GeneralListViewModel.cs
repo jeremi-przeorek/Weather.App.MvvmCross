@@ -1,7 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Input;
-using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.Plugin.FieldBinding;
 using Weather.App.MvvmCross.Core.Data;
@@ -19,7 +16,9 @@ namespace Weather.App.MvvmCross.Core.ViewModels.General
 
         public INC<bool> IsRefreshing = new NC<bool>();
         
-        public GeneralListViewModel(IMvxNavigationService navigationService, IWeatherLocationRepository weatherLocationRepository)
+        public GeneralListViewModel(
+            IMvxNavigationService navigationService,
+            IWeatherLocationRepository weatherLocationRepository)
         {
             _navigationService = navigationService;
             _weatherLocationRepository = weatherLocationRepository;

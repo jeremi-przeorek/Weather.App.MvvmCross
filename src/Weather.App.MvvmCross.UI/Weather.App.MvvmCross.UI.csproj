@@ -10,6 +10,7 @@
     <PackageReference Include="MvvmCross.Forms" Version="7.1.2" />
     <PackageReference Include="MvvmCross.Plugin.MethodBinding" Version="7.1.2" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.1874" />
+    <PackageReference Include="Xamarin.Forms.BehaviorsPack" Version="2.2.0" />
   </ItemGroup>
   
   <ItemGroup>
@@ -29,6 +30,12 @@
     <Compile Update="Resources\Colors.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Pages\AddLocationFromListWizardPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

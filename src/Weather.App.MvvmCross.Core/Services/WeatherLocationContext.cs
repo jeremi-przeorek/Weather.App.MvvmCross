@@ -1,4 +1,3 @@
-using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Weather.App.MvvmCross.Core.Models;
 
