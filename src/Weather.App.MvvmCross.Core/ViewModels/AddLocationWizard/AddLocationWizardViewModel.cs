@@ -10,7 +10,6 @@ namespace Weather.App.MvvmCross.Core.ViewModels.AddLocationWizard
 {
     public class AddLocationWizardViewModel : BaseViewModel
     {
-        private WeatherLocationRepository _weatherLocationRepository = new WeatherLocationRepository();
         private WeatherForecastService _weatherForecastService = new WeatherForecastService();
 
         public INC<bool> IsRefreshing = new NC<bool>();
@@ -18,15 +17,18 @@ namespace Weather.App.MvvmCross.Core.ViewModels.AddLocationWizard
         private readonly IUserDialogs _userDialogs;
         private readonly ILocationService _locationService;
         private readonly IMvxNavigationService _navigationService;
+        private readonly IWeatherLocationRepository _weatherLocationRepository;
 
         public AddLocationWizardViewModel(
             IUserDialogs userDialogs,
             ILocationService locationService,
-            IMvxNavigationService navigationService)
+            IMvxNavigationService navigationService,
+            IWeatherLocationRepository weatherLocationRepository)
         {
             _userDialogs = userDialogs;
             _locationService = locationService;
             _navigationService = navigationService;
+            _weatherLocationRepository = weatherLocationRepository;
         }
 
 

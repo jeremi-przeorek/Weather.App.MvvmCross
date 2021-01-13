@@ -12,8 +12,6 @@ namespace Weather.App.MvvmCross.Core.ViewModels.AddLocationFromListWizard
 {
     public class AddLocationFromListWizardViewModel : MvxViewModel
     {
-        private WeatherLocationRepository _weatherLocationRepository = new WeatherLocationRepository();
-
         private List<WeatherLocation> _locationsUnfiltered;
         public INC<List<WeatherLocation>> Locations = new NC<List<WeatherLocation>>();
 
@@ -28,15 +26,18 @@ namespace Weather.App.MvvmCross.Core.ViewModels.AddLocationFromListWizard
             }
         }
 
+        private readonly IWeatherLocationRepository _weatherLocationRepository;
         private readonly IUserDialogs _userDialogs;
         private readonly IResourcesLoader _resourcesLoader;
 
         public AddLocationFromListWizardViewModel(
             IUserDialogs userDialogs,
-            IResourcesLoader resourcesLoader)
+            IResourcesLoader resourcesLoader,
+            IWeatherLocationRepository weatherLocationRepository)
         {
             _userDialogs = userDialogs;
             _resourcesLoader = resourcesLoader;
+            _weatherLocationRepository = weatherLocationRepository;
         }
 
 
