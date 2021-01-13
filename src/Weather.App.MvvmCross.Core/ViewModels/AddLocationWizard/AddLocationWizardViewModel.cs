@@ -32,7 +32,6 @@ namespace Weather.App.MvvmCross.Core.ViewModels.AddLocationWizard
             _weatherForecastService = weatherForecastService;
         }
 
-
         public async void AddLocationByMyLocationAsync()
         {   
             IsRefreshing.Value = true;

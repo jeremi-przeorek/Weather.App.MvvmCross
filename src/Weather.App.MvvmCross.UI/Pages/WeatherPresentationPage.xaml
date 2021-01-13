@@ -21,8 +21,7 @@
                                HorizontalOptions="FillAndExpand"
                                VerticalOptions="FillAndExpand"
                                Type="Shopping"
-                               mvx:Bi.nd="IsVisible IsDataLoading; IsActive IsDataLoading">
-            </shimmer:SfShimmer>
+                               mvx:Bi.nd="IsVisible IsDataLoading; IsActive IsDataLoading" />
             <chart:SfChart x:Name="chart_1"
                            HorizontalOptions="FillAndExpand" 
                            VerticalOptions="FillAndExpand"
@@ -38,12 +37,10 @@
                     </chart:ChartLegend>
                 </chart:SfChart.Legend>
                 <chart:SfChart.PrimaryAxis>
-                    <chart:CategoryAxis>
-                    </chart:CategoryAxis>
+                    <chart:CategoryAxis />
                 </chart:SfChart.PrimaryAxis>
                 <chart:SfChart.SecondaryAxis>
-                    <chart:NumericalAxis>
-                    </chart:NumericalAxis>
+                    <chart:NumericalAxis />
                 </chart:SfChart.SecondaryAxis>
 
                 <chart:SfChart.Series>
@@ -95,39 +92,39 @@
                 <StackLayout Orientation="Vertical">
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Selected day:"
-                               HorizontalOptions="StartAndExpand"></Label>
-                        <Label Text="{Binding SelectedDayForecast.Datetime}"></Label>
+                               HorizontalOptions="StartAndExpand" />
+                        <Label Text="{Binding SelectedDayForecast.Datetime}" />
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Max Temp (°C)"
-                               HorizontalOptions="StartAndExpand"></Label>
-                        <Label Text="{Binding SelectedDayForecast.MaxTemp}"></Label>
+                               HorizontalOptions="StartAndExpand" />
+                        <Label Text="{Binding SelectedDayForecast.MaxTemp}" />
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Min Temp (°C)"
-                               HorizontalOptions="StartAndExpand"></Label>
+                               HorizontalOptions="StartAndExpand" />
                         <Label Text="{Binding SelectedDayForecast.MinTemp}"
-                               VerticalOptions="CenterAndExpand"></Label>
+                               VerticalOptions="CenterAndExpand" />
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Snow (in mm):"
-                               HorizontalOptions="StartAndExpand"></Label>
-                        <Label Text="{Binding SelectedDayForecast.Snow}"></Label>
+                               HorizontalOptions="StartAndExpand" />
+                        <Label Text="{Binding SelectedDayForecast.Snow}" />
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Average relative humidity (%)"
-                               HorizontalOptions="StartAndExpand"></Label>
-                        <Label Text="{Binding SelectedDayForecast.Rh}"></Label>
+                               HorizontalOptions="StartAndExpand" />
+                        <Label Text="{Binding SelectedDayForecast.Rh}" />
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Average total cloud coverage (%)"
-                               HorizontalOptions="StartAndExpand"></Label>
-                        <Label Text="{Binding SelectedDayForecast.Clouds}"></Label>
+                               HorizontalOptions="StartAndExpand" />
+                        <Label Text="{Binding SelectedDayForecast.Clouds}" />
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Maximum UV Index"
-                               HorizontalOptions="StartAndExpand"></Label>
-                        <Label Text="{Binding SelectedDayForecast.Uv}"></Label>
+                               HorizontalOptions="StartAndExpand" />
+                        <Label Text="{Binding SelectedDayForecast.Uv}" />
                     </StackLayout>
                 </StackLayout>
 

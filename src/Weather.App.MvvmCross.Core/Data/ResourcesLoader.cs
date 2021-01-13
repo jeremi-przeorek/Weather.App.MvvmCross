@@ -1,9 +1,8 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
-using Weather.App.Models;
+using Newtonsoft.Json;
 using Weather.App.MvvmCross.Core.Models;
 
 namespace Weather.App.MvvmCross.Core.Data

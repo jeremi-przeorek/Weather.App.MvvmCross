@@ -1,6 +1,5 @@
 using System;
 using System.Globalization;
-using MvvmCross.Converters;
 using Xamarin.Forms;
 
 namespace Weather.App.MvvmCross.UI.Converters

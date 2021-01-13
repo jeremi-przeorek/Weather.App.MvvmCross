@@ -1,5 +1,4 @@
 using System;
-using MvvmCross.Binding.BindingContext;
 using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
 using Weather.App.MvvmCross.Core.ViewModels.General;
@@ -19,12 +18,10 @@ namespace Weather.App.MvvmCross.UI.Pages
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-
         }
 
         private void OnDelete(object sender, EventArgs e)
         {
-
         }
     }
 }

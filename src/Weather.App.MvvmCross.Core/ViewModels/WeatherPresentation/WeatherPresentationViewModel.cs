@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
-using MvvmCross.Navigation;
 using MvvmCross.Plugin.FieldBinding;
-using MvvmCross.ViewModels;
 using Weather.App.Models;
 using Weather.App.MvvmCross.Core.Models;
 using Weather.App.MvvmCross.Core.Services;
