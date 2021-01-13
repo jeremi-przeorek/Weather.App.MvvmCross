@@ -8,6 +8,7 @@
                       xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
                       xmlns:viewModels="clr-namespace:Weather.App.MvvmCross.Core.ViewModels.General;assembly=Weather.App.MvvmCross.Core"
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                      x:Name="page"
                       Title="Main page"
                       x:TypeArguments="viewModels:GeneralListViewModel">
 
@@ -35,8 +36,11 @@
                     <DataTemplate x:DataType="{x:Type models:WeatherLocation}">
                         <ViewCell Height="80">
                             <ViewCell.ContextActions>
-                                <MenuItem Command="{Binding DeleteWeatherLocationEntity, Source={x:Reference ViewModel}}"
-                                          Text="Delete" IsDestructive="True" />
+                                <MenuItem IsDestructive="True"
+                                          Text="Delete"
+                                          CommandParameter="{Binding}"
+                                          Command="{Binding ViewModel.DeleteWeatherLocationEntityCommand,
+                                                            Source={x:Reference page}}" />
                             </ViewCell.ContextActions>
                             <StackLayout Orientation="Horizontal" VerticalOptions="Center">
                                 <Label Margin="20"

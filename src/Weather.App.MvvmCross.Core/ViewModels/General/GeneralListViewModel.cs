@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.Plugin.FieldBinding;
 using Weather.App.MvvmCross.Core.Data;
@@ -16,14 +17,17 @@ namespace Weather.App.MvvmCross.Core.ViewModels.General
         public INC<List<WeatherLocation>> WeatherLocations = new NC<List<WeatherLocation>>();
 
         public INC<bool> IsRefreshing = new NC<bool>();
-        
+
         public GeneralListViewModel(
             IMvxNavigationService navigationService,
             IWeatherLocationRepository weatherLocationRepository)
         {
             _navigationService = navigationService;
             _weatherLocationRepository = weatherLocationRepository;
+            DeleteWeatherLocationEntityCommand = new MvxCommand<WeatherLocation>(DeleteWeatherLocationEntity, x => x is WeatherLocation);
         }
+
+        public MvxCommand<WeatherLocation> DeleteWeatherLocationEntityCommand { get; }
 
         public async void ShowAddLocationWizardAsync()
         {
@@ -41,10 +45,9 @@ namespace Weather.App.MvvmCross.Core.ViewModels.General
             await _navigationService.Navigate<WeatherPresentationViewModel, WeatherLocation>(location);
         }
 
-        public void DeleteWeatherLocationEntity()
+        public void DeleteWeatherLocationEntity(WeatherLocation location)
         {
-            var a = 12;
-            //_weatherLocationRepository.Remove(location);
+            _weatherLocationRepository.Remove(location);
             UpdateWeatherLocationsList();
         }
 
