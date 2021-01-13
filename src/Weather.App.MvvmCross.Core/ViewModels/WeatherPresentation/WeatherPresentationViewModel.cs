@@ -12,22 +12,23 @@ namespace Weather.App.MvvmCross.Core.ViewModels.WeatherPresentation
 {
     public class WeatherPresentationViewModel : BaseViewModel<WeatherLocation>
     {
-        private WeatherForecastService _weatherForecastService = new WeatherForecastService(); // dodac interfejs
         private WeatherLocation _location;
-        private readonly IUserDialogs _userDialogs;
+
         public INC<bool> IsDataLoading = new NC<bool>();
-
         public INC<List<DailyForecastDto>> DailyForecastDtos = new NC<List<DailyForecastDto>>();
-
         public INC<int> SelectedDay = new NC<int>();
-
         public INC<DailyForecastDto> SelectedDayForecast = new NC<DailyForecastDto>();
-
         public INC<string> Title = new NC<string>();
 
-        public WeatherPresentationViewModel(IUserDialogs userDialogs)
+        private readonly IUserDialogs _userDialogs;
+        private IWeatherForecastService _weatherForecastService;
+
+        public WeatherPresentationViewModel(
+            IUserDialogs userDialogs,
+            IWeatherForecastService weatherForecastService)
         {
-            _userDialogs = userDialogs ?? throw new System.ArgumentNullException(nameof(userDialogs));
+            _userDialogs = userDialogs;
+            _weatherForecastService = weatherForecastService;
         }
 
         private async Task GetWeatherDataAsync()
