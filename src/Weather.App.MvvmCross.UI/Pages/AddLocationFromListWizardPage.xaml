@@ -15,6 +15,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <c:ItemTappedEventArgsConverter x:Key="itemTappedEventArgsConverter" />
+            <c:CountryCodeToFlagEmojiConverter x:Key="countryCodeToEmoji"/>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -33,8 +34,11 @@
                     <DataTemplate>
                         <ViewCell Height="80">
                             <StackLayout Orientation="Horizontal" VerticalOptions="Center">
-                                <Label 
-                                       mvx:Bi.nd="Text City"
+                                <Label Text="{Binding City}"
+                                       FontSize="Title"
+                                       Margin="20"></Label>
+                                <Label Text="{Binding CountryCode, Converter={StaticResource countryCodeToEmoji}}"
+                                       HorizontalOptions="EndAndExpand"
                                        FontSize="Title"
                                        Margin="20"></Label>
                             </StackLayout>

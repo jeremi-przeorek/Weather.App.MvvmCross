@@ -4,10 +4,11 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using MvvmCross.Converters;
+using Xamarin.Forms;
 
-namespace Weather.App.MvvmCross.Core.Converters
+namespace Weather.App.MvvmCross.UI.Converters
 {
-    public class CountryCodeToFlagEmojiConverter : IMvxValueConverter
+    public class CountryCodeToFlagEmojiConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

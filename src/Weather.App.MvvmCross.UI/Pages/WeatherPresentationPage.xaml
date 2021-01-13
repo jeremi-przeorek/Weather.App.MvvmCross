@@ -49,7 +49,7 @@
                 <chart:SfChart.Series>
                     <chart:ColumnSeries 
                         x:Name="columnSeries1"
-                        mvx:Bi.nd="ItemSource DailyForecastDtos"
+                        mvx:Bi.nd="ItemsSource DailyForecastDtos"
                         Label="Precipitation (mm) &#x1F4A7;"
                         XBindingPath="Datetime" 
                         YBindingPath="Precip"
@@ -69,9 +69,9 @@
                     </chart:ColumnSeries>
 
                     <chart:LineSeries
-                        mvx:Bi.nd="DataObject DailyForecastDtos; 
-                        YBindingPath Temp; 
-                        XBindingPath Datetime"
+                        mvx:Bi.nd="ItemsSource DailyForecastDtos"
+                        YBindingPath="Temp"
+                        XBindingPath="Datetime"
                         Label="Average temp. (°C) &#x1F321;"
                         Color="#FF9B1E"
                         EnableAnimation="True"
@@ -81,7 +81,6 @@
                         <chart:LineSeries.TooltipTemplate>
                             <DataTemplate>
                                 <StackLayout Orientation="Horizontal">
-                                    <Label mvx:Bi.nd="Text Temp"/>
                                     <Label Text="{Binding Temp}"/>
                                     <Label Text="°C" />
                                 </StackLayout>

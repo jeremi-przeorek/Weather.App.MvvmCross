@@ -10,18 +10,15 @@
     xmlns:c="clr-namespace:Weather.App.MvvmCross.UI.Converters"
     x:Class="Weather.App.MvvmCross.UI.Pages.GeneralListPage"
     xmlns:viewModels="clr-namespace:Weather.App.MvvmCross.Core.ViewModels.General;assembly=Weather.App.MvvmCross.Core"
+    xmlns:models="clr-namespace:Weather.App.MvvmCross.Core.Models;assembly=Weather.App.MvvmCross.Core"
     Title="Main page">
 
     <ContentPage.Resources>
         <ResourceDictionary>
             <c:ItemTappedEventArgsConverter x:Key="itemTappedEventArgsConverter" />
+            <c:CountryCodeToFlagEmojiConverter x:Key="countryCodeToEmoji"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-
-    <!--<ContentPage.Resources>
-        
-        <converters:CountryCodeToFlagEmojiConverter x:Key="countryCodeToEmoji"/>
-    </ContentPage.Resources>-->
 
     <ContentPage.Content>
         <StackLayout>
@@ -40,21 +37,20 @@
                                                       Converter="{StaticResource itemTappedEventArgsConverter}"/>
                 </ListView.Behaviors>
                 <ListView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="{x:Type models:WeatherLocation}">
                         <ViewCell Height="80">
                             <ViewCell.ContextActions>
-                                <MenuItem mvx:Bi.nd="Command DeleteWeatherLocationEntity"
+                                <MenuItem Command="{Binding DeleteWeatherLocationEntity, Source={x:Reference ViewModel}}"
                                           Text="Delete" IsDestructive="True" />
                             </ViewCell.ContextActions>
                             <StackLayout Orientation="Horizontal" VerticalOptions="Center">
                                 <Label Text="{Binding City}"
                                        FontSize="Title"
                                        Margin="20"></Label>
-                                <Label Text="{Binding CountryCode}"
+                                <Label Text="{Binding CountryCode, Converter={StaticResource countryCodeToEmoji}}"
                                        HorizontalOptions="EndAndExpand"
                                        FontSize="Title"
                                        Margin="20"></Label>
-                                <!--Converter={StaticResource Key=countryCodeToEmoji}} -->
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

@@ -33,7 +33,7 @@ namespace Weather.App.MvvmCross.Core.Services
 
         public async Task<DailyForecast16DaysDto> GetDailyForecastFor16DaysAsync(WeatherLocation location)
         {
-            // use result class
+            //TODO use result class
 
             try
             {
