@@ -1,9 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using MvvmCross.Converters;
 using Xamarin.Forms;
 
 namespace Weather.App.MvvmCross.UI.Converters

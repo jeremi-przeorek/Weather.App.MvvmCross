@@ -5,9 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     xmlns:mvxViews="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
-    xmlns:local="clr-namespace:Weather.App.MvvmCross.UI.Pages"
     xmlns:behaviors="clr-namespace:Weather.App.MvvmCross.UI.Behaviors"
-    xmlns:commandbinding="clr-namespace:MvvmCross.Commands;assembly=MvvmCross"
     xmlns:c="clr-namespace:Weather.App.MvvmCross.UI.Converters"
     x:Class="Weather.App.MvvmCross.UI.Pages.AddLocationFromListWizardPage"
     xmlns:viewModels="clr-namespace:Weather.App.MvvmCross.Core.ViewModels.AddLocationFromListWizard;assembly=Weather.App.MvvmCross.Core">
@@ -36,11 +34,11 @@
                             <StackLayout Orientation="Horizontal" VerticalOptions="Center">
                                 <Label Text="{Binding City}"
                                        FontSize="Title"
-                                       Margin="20"></Label>
+                                       Margin="20" />
                                 <Label Text="{Binding CountryCode, Converter={StaticResource countryCodeToEmoji}}"
                                        HorizontalOptions="EndAndExpand"
                                        FontSize="Title"
-                                       Margin="20"></Label>
+                                       Margin="20" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

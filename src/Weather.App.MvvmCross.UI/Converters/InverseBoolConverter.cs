@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using MvvmCross.Converters;
 
 namespace Weather.App.MvvmCross.UI.Converters

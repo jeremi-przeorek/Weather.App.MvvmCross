@@ -40,7 +40,6 @@ namespace Weather.App.MvvmCross.Core.ViewModels.AddLocationFromListWizard
             _weatherLocationRepository = weatherLocationRepository;
         }
 
-
         public async Task LoadLocationsAsync()
         {
             Locations.Value = new List<WeatherLocation>(await _resourcesLoader.LoadWeatherLocationsAsync()); //uzyc ioc

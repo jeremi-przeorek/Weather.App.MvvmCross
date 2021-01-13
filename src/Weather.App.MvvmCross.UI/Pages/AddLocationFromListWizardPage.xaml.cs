@@ -16,7 +16,6 @@ namespace Weather.App.MvvmCross.UI.Pages
 
         private void ListView_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
-
         }
     }
 }

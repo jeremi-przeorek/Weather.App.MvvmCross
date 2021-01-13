@@ -1,7 +1,6 @@
 using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
 using Weather.App.MvvmCross.Core.ViewModels.AddLocationWizard;
-using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Weather.App.MvvmCross.UI.Pages
