@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mvxViews:MvxContentPage
+    x:TypeArguments="viewModels:WeatherPresentationViewModel"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mvxViews="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+    xmlns:shimmer="clr-namespace:Syncfusion.XForms.Shimmer;assembly=Syncfusion.Core.XForms"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:c="clr-namespace:Weather.App.MvvmCross.UI.Converters"
+    x:Class="Weather.App.MvvmCross.UI.Pages.WeatherPresentationPage"
+    xmlns:viewModels="clr-namespace:Weather.App.MvvmCross.Core.ViewModels.WeatherPresentation;assembly=Weather.App.MvvmCross.Core">
+
+    <ContentPage.Resources>
+        <c:InverseBoolConverter x:Key="inverter"/>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <shimmer:SfShimmer x:Name="shimmer"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               Type="Shopping"
+                               mvx:Bi.nd="IsVisible IsDataLoading; IsActive IsDataLoading">
+            </shimmer:SfShimmer>
+            <chart:SfChart x:Name="chart_1"
+                           HorizontalOptions="FillAndExpand" 
+                           VerticalOptions="FillAndExpand"
+                           Margin="20"
+                           SelectionChanged="Chart_SelectionChanged"
+                           IsVisible="{Binding IsDataLoading, Converter={StaticResource inverter}}">
+
+                <chart:SfChart.Legend>
+                    <chart:ChartLegend>
+                        <chart:ChartLegend.LabelStyle>
+                            <chart:ChartLegendLabelStyle FontSize="15" />
+                        </chart:ChartLegend.LabelStyle>
+                    </chart:ChartLegend>
+                </chart:SfChart.Legend>
+                <chart:SfChart.PrimaryAxis>
+                    <chart:CategoryAxis>
+                    </chart:CategoryAxis>
+                </chart:SfChart.PrimaryAxis>
+                <chart:SfChart.SecondaryAxis>
+                    <chart:NumericalAxis>
+                    </chart:NumericalAxis>
+                </chart:SfChart.SecondaryAxis>
+
+                <chart:SfChart.Series>
+                    <chart:ColumnSeries 
+                        x:Name="columnSeries1"
+                        mvx:Bi.nd="ItemSource DailyForecastDtos"
+                        Label="Precipitation (mm) &#x1F4A7;"
+                        XBindingPath="Datetime" 
+                        YBindingPath="Precip"
+                        Color="#1D5273"
+                        SelectedDataPointColor="#699EBF"
+                        EnableAnimation="True"
+                        EnableTooltip="True"
+                        EnableDataPointSelection="True">
+                        <chart:ColumnSeries.TooltipTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label mvx:Bi.nd="Text Precip"/>
+                                    <Label Text="mm" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </chart:ColumnSeries.TooltipTemplate>
+                    </chart:ColumnSeries>
+
+                    <chart:LineSeries
+                        mvx:Bi.nd="DataObject DailyForecastDtos; 
+                        YBindingPath Temp; 
+                        XBindingPath Datetime"
+                        Label="Average temp. (°C) &#x1F321;"
+                        Color="#FF9B1E"
+                        EnableAnimation="True"
+                        EnableTooltip="True"
+                        EnableDataPointSelection="True"
+                        SelectedDataPointColor="#FF9B1E">
+                        <chart:LineSeries.TooltipTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label mvx:Bi.nd="Text Temp"/>
+                                    <Label Text="{Binding Temp}"/>
+                                    <Label Text="°C" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </chart:LineSeries.TooltipTemplate>
+                    </chart:LineSeries>
+
+                </chart:SfChart.Series>
+
+            </chart:SfChart>
+            <ScrollView Padding="20">
+                <StackLayout Orientation="Vertical">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Selected day:"
+                               HorizontalOptions="StartAndExpand"></Label>
+                        <Label Text="{Binding SelectedDayForecast.Datetime}"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Max Temp (°C)"
+                               HorizontalOptions="StartAndExpand"></Label>
+                        <Label Text="{Binding SelectedDayForecast.MaxTemp}"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Min Temp (°C)"
+                               HorizontalOptions="StartAndExpand"></Label>
+                        <Label Text="{Binding SelectedDayForecast.MinTemp}"
+                               VerticalOptions="CenterAndExpand"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Snow (in mm):"
+                               HorizontalOptions="StartAndExpand"></Label>
+                        <Label Text="{Binding SelectedDayForecast.Snow}"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Average relative humidity (%)"
+                               HorizontalOptions="StartAndExpand"></Label>
+                        <Label Text="{Binding SelectedDayForecast.Rh}"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Average total cloud coverage (%)"
+                               HorizontalOptions="StartAndExpand"></Label>
+                        <Label Text="{Binding SelectedDayForecast.Clouds}"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Maximum UV Index"
+                               HorizontalOptions="StartAndExpand"></Label>
+                        <Label Text="{Binding SelectedDayForecast.Uv}"></Label>
+                    </StackLayout>
+                </StackLayout>
+
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+
+</mvxViews:MvxContentPage>

@@ -9,6 +9,8 @@
     <PackageReference Include="MvvmCross" Version="7.1.2" />
     <PackageReference Include="MvvmCross.Forms" Version="7.1.2" />
     <PackageReference Include="MvvmCross.Plugin.MethodBinding" Version="7.1.2" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="18.4.0.34" />
+    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="18.4.0.34" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.1874" />
     <PackageReference Include="Xamarin.Forms.BehaviorsPack" Version="2.2.0" />
   </ItemGroup>
@@ -34,6 +36,9 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Pages\AddLocationFromListWizardPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\WeatherPresentationPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>

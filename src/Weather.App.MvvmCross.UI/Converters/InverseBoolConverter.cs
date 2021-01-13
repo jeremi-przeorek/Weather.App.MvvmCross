@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using MvvmCross.Converters;
 
-namespace Weather.App.Converters
+namespace Weather.App.MvvmCross.UI.Converters
 {
     public class InverseBoolConverter : IMvxValueConverter
     {

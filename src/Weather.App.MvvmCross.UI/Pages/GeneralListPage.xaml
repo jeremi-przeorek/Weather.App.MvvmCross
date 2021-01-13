@@ -6,10 +6,18 @@
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     xmlns:local="clr-namespace:Weather.App.MvvmCross.UI.Pages"
+    xmlns:behaviors="clr-namespace:Weather.App.MvvmCross.UI.Behaviors"
+    xmlns:c="clr-namespace:Weather.App.MvvmCross.UI.Converters"
     x:Class="Weather.App.MvvmCross.UI.Pages.GeneralListPage"
     xmlns:viewModels="clr-namespace:Weather.App.MvvmCross.Core.ViewModels.General;assembly=Weather.App.MvvmCross.Core"
     Title="Main page">
-    
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <c:ItemTappedEventArgsConverter x:Key="itemTappedEventArgsConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <!--<ContentPage.Resources>
         
         <converters:CountryCodeToFlagEmojiConverter x:Key="countryCodeToEmoji"/>
@@ -26,11 +34,16 @@
                       RefreshCommand UpdateWeatherLocationsList; 
                       IsRefreshing IsRefreshing;"
                       IsPullToRefreshEnabled="True">
+                <ListView.Behaviors>
+                    <behaviors:EventToCommandBehavior EventName="ItemTapped" 
+                                                      mvx:Bi.nd="Command ShowWeatherPresentationPageAsync"
+                                                      Converter="{StaticResource itemTappedEventArgsConverter}"/>
+                </ListView.Behaviors>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell Height="80">
                             <ViewCell.ContextActions>
-                                <MenuItem mvx:Bi.nd="Clicked DeleteWeatherLocationEntityCommand; CommandParameter='.'"
+                                <MenuItem mvx:Bi.nd="Command DeleteWeatherLocationEntity"
                                           Text="Delete" IsDestructive="True" />
                             </ViewCell.ContextActions>
                             <StackLayout Orientation="Horizontal" VerticalOptions="Center">

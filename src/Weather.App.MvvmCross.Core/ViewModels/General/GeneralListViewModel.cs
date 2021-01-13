@@ -4,6 +4,7 @@ using MvvmCross.Plugin.FieldBinding;
 using Weather.App.MvvmCross.Core.Data;
 using Weather.App.MvvmCross.Core.Models;
 using Weather.App.MvvmCross.Core.ViewModels.AddLocationWizard;
+using Weather.App.MvvmCross.Core.ViewModels.WeatherPresentation;
 
 namespace Weather.App.MvvmCross.Core.ViewModels.General
 {
@@ -35,12 +36,9 @@ namespace Weather.App.MvvmCross.Core.ViewModels.General
             IsRefreshing.Value = false;
         }
 
-        public void ShowWeatherPresentationPage(WeatherLocation location)
+        public async void ShowWeatherPresentationPageAsync(WeatherLocation location)
         {
-            var df = "Adb";
-            /* _pageService.PushAsync(
-                 new WeatherPresentation(
-                     location));*/
+            await _navigationService.Navigate<WeatherPresentationViewModel, WeatherLocation>(location);
         }
 
         public void DeleteWeatherLocationEntity()
